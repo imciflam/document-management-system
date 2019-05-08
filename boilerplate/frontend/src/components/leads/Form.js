@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export class Form extends Component {
   render() {
@@ -6,8 +6,8 @@ export class Form extends Component {
       <div>
         <h1>add form</h1>
       </div>
-    )
+    );
   }
 }
 
-export default Form
+export default Form;
