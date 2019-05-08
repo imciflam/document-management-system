@@ -14,6 +14,9 @@ for development:
 5. npm i //yikes
 
 6.1.2 cd boilerplate
+
 6.1.2 >python manage.py runserver
+
 6.2.1 cd ./
+
 6.2.2 npm run dev
