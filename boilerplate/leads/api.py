@@ -4,8 +4,16 @@ from .serializers import LeadSerialiser
 
 #viewset - allows crud without explicit methods
 class LeadViewSet(viewsets.ModelViewSet):
-    queryset = Lead.objects.all()
+    #queryset = Lead.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
+
+
     serializer_class = LeadSerialiser
+
+    def get_queryset(self):
+        return self.request.user.leads.all()
+
+    def partial_create(self, serializer):
+        serializer.save(owner=self.request.user)
