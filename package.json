@@ -23,8 +23,11 @@
     "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-alert": "^5.5.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.7.0",
     "react-redux": "^7.0.3",
+    "react-transition-group": "^4.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
