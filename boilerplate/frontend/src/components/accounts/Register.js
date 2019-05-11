@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../actions/auth";
 import { createMessage } from "../../actions/messages";
+
 export class Register extends Component {
   state = {
     username: "",
@@ -31,7 +32,9 @@ export class Register extends Component {
       this.props.register(newUser);
     }
   };
+
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+
   render() {
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />;
@@ -40,10 +43,10 @@ export class Register extends Component {
     return (
       <div className="col-md-6 m-auto">
         <div className="card card-body mt-5">
-          <h2 className="text-center">Register</h2>
+          <h2 className="text-center">Регистрация</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
-              <label>Username</label>
+              <label>Имя</label>
               <input
                 type="text"
                 className="form-control"
@@ -53,7 +56,7 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Email</label>
+              <label>Почта</label>
               <input
                 type="email"
                 className="form-control"
@@ -63,7 +66,7 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label>Пароль</label>
               <input
                 type="password"
                 className="form-control"
@@ -73,7 +76,7 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Confirm Password</label>
+              <label>Подтвердите пароль</label>
               <input
                 type="password"
                 className="form-control"
@@ -84,11 +87,11 @@ export class Register extends Component {
             </div>
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-                Register
+                Зарегистрироваться
               </button>
             </div>
             <p>
-              Already have an account? <Link to="/login">Login</Link>
+              Есть аккаунт? <Link to="/login">Войти</Link>
             </p>
           </form>
         </div>
@@ -100,6 +103,7 @@ export class Register extends Component {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
+
 //we used login so import it
 export default connect(
   mapStateToProps,

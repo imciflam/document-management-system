@@ -8,6 +8,7 @@ export class Alerts extends Component {
     error: PropTypes.object.isRequired,
     message: PropTypes.object.isRequired
   };
+
   componentDidUpdate(prevProps) {
     const { error, alert, message } = this.props;
     if (error !== prevProps.error) {
@@ -37,4 +38,4 @@ const mapStateToProps = state => ({
   message: state.messages
 });
 
-export default connect(mapStateToProps)(withAlert()(Alerts));
+export default connect(mapStateToProps)(withAlert(Alerts));

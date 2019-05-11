@@ -41,6 +41,7 @@ export const login = (username, password) => dispatch => {
       "Content-Type": "application/json"
     }
   };
+
   // request
   const body = JSON.stringify({ username, password });
 
@@ -92,8 +93,9 @@ export const register = ({ username, password, email }) => dispatch => {
 export const logout = () => (dispatch, getState) => {
   //pass null for body for this to work
   axios
-    .post("/api/auth/logout", null, tokenConfig(getState))
+    .post("/api/auth/logout/", null, tokenConfig(getState))
     .then(res => {
+      dispatch({ type: "CLEAR_LEADS" });
       dispatch({
         type: LOGOUT_SUCCESS
       });
@@ -119,5 +121,6 @@ export const tokenConfig = getState => {
   if (token) {
     config.headers["Authorization"] = `Token ${token}`;
   }
+
   return config;
 };

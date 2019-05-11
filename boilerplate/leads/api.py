@@ -1,19 +1,18 @@
 from leads.models import Lead
 from rest_framework import viewsets, permissions
-from .serializers import LeadSerialiser
+from .serializers import LeadSerializer
 
-#viewset - allows crud without explicit methods
+# Lead Viewset
+
+
 class LeadViewSet(viewsets.ModelViewSet):
-    #queryset = Lead.objects.all()
     permission_classes = [
-        permissions.IsAuthenticated
+        permissions.IsAuthenticated,
     ]
-
-
-    serializer_class = LeadSerialiser
+    serializer_class = LeadSerializer
 
     def get_queryset(self):
         return self.request.user.leads.all()
 
-    def partial_create(self, serializer):
+    def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

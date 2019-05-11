@@ -38,7 +38,7 @@ export class Header extends Component {
         </li>
         <li className="nav-item">
           <Link to="/login" className="nav-link">
-            Войти
+            Вход
           </Link>
         </li>
       </ul>

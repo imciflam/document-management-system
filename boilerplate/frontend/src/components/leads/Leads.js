@@ -13,17 +13,18 @@ export class Leads extends Component {
   componentDidMount() {
     this.props.getLeads();
   }
+
   render() {
     return (
       <Fragment>
-        <h2>Leads</h2>
+        <h2>Мои записки</h2>
         <table className="table table-striped">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Message</th>
+              <th>Имя</th>
+              <th>Почта</th>
+              <th>Сообщение</th>
               <th />
             </tr>
           </thead>
@@ -40,7 +41,7 @@ export class Leads extends Component {
                     className="btn btn-danger btn-sm"
                   >
                     {" "}
-                    Delete
+                    Удалить
                   </button>
                 </td>
               </tr>
