@@ -21,7 +21,8 @@ export class Header extends Component {
         <li className="nav-item">
           <button
             onClick={this.props.logout}
-            className="nav-link btn btn-info btn-sm text-light"
+            className="nav-link btn btn-info bg-primary text-light"
+            type="button"
           >
             Выйти
           </button>

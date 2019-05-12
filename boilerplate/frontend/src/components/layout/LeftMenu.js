@@ -17,6 +17,14 @@ class LeftMenu extends React.Component {
     this.setState({ collapsed });
   };
 
+  mountDocumentForm() {
+    alert("document");
+  }
+
+  mountLeadsForm() {
+    alert("document");
+  }
+
   render() {
     return (
       <Layout>
@@ -29,7 +37,9 @@ class LeftMenu extends React.Component {
             style={{ lineHeight: "64px" }}
           >
             <Menu.Item key="1">Новое сообщение</Menu.Item>
-            <Menu.Item key="2">Новый документ</Menu.Item>
+            <Menu.Item key="2" onClick={this.mountDocumentForm}>
+              Новый документ
+            </Menu.Item>
             <Menu.Item key="3">Сформировать отчет</Menu.Item>
           </Menu>
         </Header>
@@ -56,7 +66,9 @@ class LeftMenu extends React.Component {
                     </span>
                   }
                 >
-                  <Menu.Item key="1">Служебные записки</Menu.Item>
+                  <Menu.Item key="1" onClick={this.mountLeadsForm}>
+                    Служебные записки
+                  </Menu.Item>
                   <Menu.Item key="2">Договоры</Menu.Item>
                   <Menu.Item key="3">Задачи секретариата</Menu.Item>
                   <Menu.Item key="4">Запуск проектов</Menu.Item>
