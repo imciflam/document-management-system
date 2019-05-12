@@ -3,8 +3,10 @@ from django.contrib.auth.models import User
 
 
 class Lead(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+    documentCode = models.CharField(max_length=100, blank=True)
+    documentStageCode = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=100, blank=True)
+    email = models.CharField(max_length=100, blank=True)
     message = models.CharField(max_length=500, blank=True)
     owner = models.ForeignKey(
         User, related_name="leads", on_delete=models.CASCADE, null=True)

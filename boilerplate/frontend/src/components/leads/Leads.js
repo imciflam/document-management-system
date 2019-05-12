@@ -15,6 +15,7 @@ export class Leads extends Component {
   }
 
   render() {
+    console.log(this.props.leads);
     return (
       <Fragment>
         <h2>Мои записки</h2>
@@ -22,9 +23,11 @@ export class Leads extends Component {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Имя</th>
-              <th>Почта</th>
-              <th>Сообщение</th>
+              <th>Тип документа</th>
+              <th>Этап</th>
+              <th>Предмет</th>
+              <th>Получатель</th>
+              <th>Источник</th>
               <th />
             </tr>
           </thead>
@@ -32,6 +35,8 @@ export class Leads extends Component {
             {this.props.leads.map(lead => (
               <tr key={lead.id}>
                 <td>{lead.id}</td>
+                <td>{lead.documentCode}</td>
+                <td>{lead.documentStageCode}</td>
                 <td>{lead.name}</td>
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
