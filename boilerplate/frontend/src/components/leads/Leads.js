@@ -28,6 +28,7 @@ export class Leads extends Component {
               <th>Предмет</th>
               <th>Получатель</th>
               <th>Источник</th>
+              <th>Файл</th>
               <th>Дата</th>
               <th />
             </tr>
@@ -41,6 +42,7 @@ export class Leads extends Component {
                 <td>{lead.name}</td>
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
+                <td>{lead.fileDocument}</td>
                 <td>{lead.created_at.slice(0, -17)}</td>
                 <td>
                   <button

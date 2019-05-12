@@ -9,7 +9,8 @@ export class Form extends Component {
     documentStageCode: "",
     name: "",
     email: "",
-    message: ""
+    message: "",
+    fileDocument: ""
   };
 
   static propTypes = {
@@ -19,12 +20,14 @@ export class Form extends Component {
   constructor(props) {
     super(props);
     this.state = { documentCode: "акт", documentStageCode: "черновик" };
-    console.log(this.state.documentCode + "f");
-    console.log(this.state.documentCode + "f");
+    this.fileInput = React.createRef();
   }
 
   //any name will match, same with value
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  onFileChange = e =>
+    this.setState({ [e.target.name]: this.fileInput.current.files[0].name });
 
   onSubmit = e => {
     e.preventDefault();
@@ -35,7 +38,15 @@ export class Form extends Component {
       email,
       message
     } = this.state;
-    const lead = { documentCode, documentStageCode, name, email, message };
+    let fileDocument = this.fileInput.current.files[0];
+    const lead = {
+      documentCode,
+      documentStageCode,
+      name,
+      email,
+      message,
+      fileDocument
+    };
     this.props.addLead(lead);
     console.log(lead);
     this.setState({
@@ -43,8 +54,8 @@ export class Form extends Component {
       email: "",
       message: ""
     });
-    console.log(documentCode);
-    console.log(documentStageCode);
+    console.log(this.fileInput.current.files[0]);
+    alert(`Selected file - ${this.fileInput.current.files[0].name}`);
   };
 
   render() {
@@ -56,11 +67,11 @@ export class Form extends Component {
       message
     } = this.state;
     return (
-      <div className="card card-body mt-4 mb-4">
+      <div className="card card-body mt-4 mb-4 w-50 mx-auto">
         <h2>Добавить записку</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label htmlFor="documentCode">Код этапа</label>
+            <label htmlFor="documentCode">Тип документа</label>
             <select
               className="form-control"
               id="documentCode"
@@ -81,7 +92,7 @@ export class Form extends Component {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="documentStageCode">Код этапа</label>
+            <label htmlFor="documentStageCode">Этап</label>
             <select
               className="form-control"
               id="documentStageCode"
@@ -127,6 +138,15 @@ export class Form extends Component {
               name="message"
               onChange={this.onChange}
               value={message}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="file"
+              className="fileDocument"
+              id="fileDocument"
+              ref={this.fileInput}
+              onChange={this.onFileChange}
             />
           </div>
           <div className="form-group">

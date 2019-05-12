@@ -36,8 +36,12 @@ export const deleteLead = id => (dispatch, getState) => {
 //add lead
 //payload - data coming back
 export const addLead = lead => (dispatch, getState) => {
+  console.log("lead");
+  console.log(lead);
   axios
-    .post("/api/leads/", lead, tokenConfig(getState))
+    .post("/api/leads/", lead, tokenConfig(getState), {
+      headers: { "Content-Type": "undefined" }
+    })
     .then(res => {
       dispatch(createMessage({ addLead: "Успешно добавлено" }));
       dispatch({
@@ -45,7 +49,8 @@ export const addLead = lead => (dispatch, getState) => {
         payload: res.data
       });
     })
-    .catch(err =>
-      dispatch(returnErrors(err.response.data, err.response.status))
-    );
+    .catch(err => {
+      dispatch(returnErrors(err.response.data, err.response.status));
+      console.log(lead);
+    });
 };
