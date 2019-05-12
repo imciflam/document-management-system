@@ -28,6 +28,7 @@ export class Leads extends Component {
               <th>Предмет</th>
               <th>Получатель</th>
               <th>Источник</th>
+              <th>Дата</th>
               <th />
             </tr>
           </thead>
@@ -40,6 +41,7 @@ export class Leads extends Component {
                 <td>{lead.name}</td>
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
+                <td>{lead.created_at.slice(0, -17)}</td>
                 <td>
                   <button
                     onClick={this.props.deleteLead.bind(this, lead.id)}

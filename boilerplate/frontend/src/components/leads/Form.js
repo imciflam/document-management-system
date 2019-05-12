@@ -18,8 +18,9 @@ export class Form extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { documentCode: "акт" };
-    this.state = { documentStageCode: "черновик" };
+    this.state = { documentCode: "акт", documentStageCode: "черновик" };
+    console.log(this.state.documentCode + "f");
+    console.log(this.state.documentCode + "f");
   }
 
   //any name will match, same with value
@@ -38,12 +39,11 @@ export class Form extends Component {
     this.props.addLead(lead);
     console.log(lead);
     this.setState({
-      documentCode: "акт",
-      documentStageCode: "черновик",
       name: "",
       email: "",
       message: ""
     });
+    console.log(documentCode);
     console.log(documentStageCode);
   };
 
@@ -60,7 +60,7 @@ export class Form extends Component {
         <h2>Добавить записку</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label htmlFor="documentCode">Код документа</label>
+            <label htmlFor="documentCode">Код этапа</label>
             <select
               className="form-control"
               id="documentCode"
