@@ -70,7 +70,10 @@ class LeftMenu extends React.Component {
                   key="sub1"
                   title={
                     <span>
-                      <Icon type="folder" />
+                      <Icon
+                        style={{ verticalAlign: "0.125em" }}
+                        type="folder"
+                      />
                       Общие папки
                     </span>
                   }
@@ -93,7 +96,7 @@ class LeftMenu extends React.Component {
                   key="sub2"
                   title={
                     <span>
-                      <Icon type="star" />
+                      <Icon type="star" style={{ verticalAlign: "0.125em" }} />
                       Избранное
                     </span>
                   }
@@ -107,7 +110,7 @@ class LeftMenu extends React.Component {
                   key="sub4"
                   title={
                     <span>
-                      <Icon type="user" />
+                      <Icon type="user" style={{ verticalAlign: "0.125em" }} />
                       Мои документы
                     </span>
                   }
@@ -121,18 +124,24 @@ class LeftMenu extends React.Component {
                   key="sub5"
                   title={
                     <span>
-                      <Icon type="laptop" />
+                      <Icon
+                        type="laptop"
+                        style={{ verticalAlign: "0.125em" }}
+                      />
                       Договоры
                     </span>
                   }
                 />
 
                 <Menu.Item>
-                  <Icon type="file-search" />
+                  <Icon
+                    type="file-search"
+                    style={{ verticalAlign: "0.125em" }}
+                  />
                   <span>Результаты поиска</span>
                 </Menu.Item>
                 <Menu.Item>
-                  <Icon type="delete" />
+                  <Icon type="delete" style={{ verticalAlign: "0.125em" }} />
                   <span>Корзина</span>
                 </Menu.Item>
               </Menu>
