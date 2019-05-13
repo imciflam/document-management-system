@@ -31,7 +31,6 @@ class LeftMenu extends React.Component {
   }
 
   mountLeadsForm() {
-    alert("leads");
     this.setState({ leadsCalled: true });
   }
 
@@ -71,7 +70,7 @@ class LeftMenu extends React.Component {
                   key="sub1"
                   title={
                     <span>
-                      <Icon type="user" />
+                      <Icon type="folder" />
                       Общие папки
                     </span>
                   }
@@ -94,7 +93,7 @@ class LeftMenu extends React.Component {
                   key="sub2"
                   title={
                     <span>
-                      <Icon type="notification" />
+                      <Icon type="star" />
                       Избранное
                     </span>
                   }
@@ -108,7 +107,7 @@ class LeftMenu extends React.Component {
                   key="sub4"
                   title={
                     <span>
-                      <Icon type="laptop" />
+                      <Icon type="user" />
                       Мои документы
                     </span>
                   }
@@ -132,34 +131,15 @@ class LeftMenu extends React.Component {
                   <Menu.Item key="11">option11</Menu.Item>
                 <Menu.Item key="12">option12</Menu.Item>*/}
                 </SubMenu>
-                <SubMenu
-                  key="sub6"
-                  title={
-                    <span>
-                      <Icon type="laptop" />
-                      Результаты поиска
-                    </span>
-                  }
-                >
-                  {/*<Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>*/}
-                </SubMenu>
-                <SubMenu
-                  key="sub7"
-                  title={
-                    <span>
-                      <Icon type="laptop" />
-                      Корзина
-                    </span>
-                  }
-                >
-                  {/*<Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>*/}
-                </SubMenu>
+
+                <Menu.Item>
+                  <Icon type="file-search" />
+                  <span>Результаты поиска</span>
+                </Menu.Item>
+                <Menu.Item>
+                  <Icon type="delete" />
+                  <span>Корзина</span>
+                </Menu.Item>
               </Menu>
             </Sider>
             <Content style={{ padding: "0 24px", minHeight: 280 }}>

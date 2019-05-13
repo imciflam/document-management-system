@@ -64,11 +64,11 @@ export class Header extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand font-italic" href="#">
+            <a className="navbar-brand font-weight-bold" href="#">
               ТатарстанОС
             </a>
           </div>
-          {isAuthenticated ? authLinks : authLinks}
+          {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
     );
