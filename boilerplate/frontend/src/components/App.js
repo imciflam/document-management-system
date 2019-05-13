@@ -41,11 +41,11 @@ class App extends Component {
             <Fragment>
               <Header />
               <Alerts />
-                <Switch>
-                  <PrivateRoute exact path="/" component={Dashboard} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/login" component={Login} />
-                </Switch>
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <PrivateRoute exact path="/register" component={Register} />
+                <PrivateRoute exact path="/login" component={Login} />
+              </Switch>
             </Fragment>
           </Router>
         </AlertProvider>

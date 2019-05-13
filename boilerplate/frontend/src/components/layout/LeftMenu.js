@@ -6,10 +6,19 @@ const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 import Form from "../leads/Form";
+import Leads from "../leads/Leads";
+
+const MyComponent = ({ name }) => {
+  if (name) {
+    return <div className="hello">Привет, {name}</div>;
+  }
+  return <div className="hello">Пожалуйста, войдите в ваш аккаунт</div>;
+};
 
 class LeftMenu extends React.Component {
   state = {
-    collapsed: false
+    collapsed: false,
+    leadsCalled: false
   };
 
   onCollapse = collapsed => {
@@ -22,7 +31,8 @@ class LeftMenu extends React.Component {
   }
 
   mountLeadsForm() {
-    alert("document");
+    alert("leads");
+    this.setState({ leadsCalled: true });
   }
 
   render() {
@@ -66,7 +76,7 @@ class LeftMenu extends React.Component {
                     </span>
                   }
                 >
-                  <Menu.Item key="1" onClick={this.mountLeadsForm}>
+                  <Menu.Item key="1" onClick={this.mountLeadsForm.bind(this)}>
                     Служебные записки
                   </Menu.Item>
                   <Menu.Item key="2">Договоры</Menu.Item>
@@ -153,7 +163,7 @@ class LeftMenu extends React.Component {
               </Menu>
             </Sider>
             <Content style={{ padding: "0 24px", minHeight: 280 }}>
-              <Form />
+              {!this.state.leadsCalled ? <Form /> : <Leads />}
             </Content>
           </Layout>
         </Content>
