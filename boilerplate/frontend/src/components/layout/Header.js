@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-
+import { Avatar } from "antd";
 export class Header extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
@@ -13,15 +13,19 @@ export class Header extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     //holds component
+    //be fkn careful with slice
     const authLinks = (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
           <strong>{user ? `Добро пожаловать, ${user.username}` : ""}</strong>
+          <Avatar size={35}>
+            {user ? `${user.username.slice(0, 1)}` : ""}
+          </Avatar>
         </span>
         <li className="nav-item">
           <button
             onClick={this.props.logout}
-            className="nav-link btn btn-info bg-primary text-light"
+            className="nav-link btn btn-info bg-primary text-light rounded mt-1"
             type="button"
           >
             Выйти
@@ -60,7 +64,7 @@ export class Header extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand font-weight-bold" href="#">
               ТатарстанОС
             </a>
           </div>

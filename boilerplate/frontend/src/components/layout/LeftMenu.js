@@ -6,10 +6,19 @@ const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 import Form from "../leads/Form";
+import Leads from "../leads/Leads";
+
+const MyComponent = ({ name }) => {
+  if (name) {
+    return <div className="hello">Привет, {name}</div>;
+  }
+  return <div className="hello">Пожалуйста, войдите в ваш аккаунт</div>;
+};
 
 class LeftMenu extends React.Component {
   state = {
-    collapsed: false
+    collapsed: false,
+    leadsCalled: false
   };
 
   onCollapse = collapsed => {
@@ -22,7 +31,7 @@ class LeftMenu extends React.Component {
   }
 
   mountLeadsForm() {
-    alert("document");
+    this.setState({ leadsCalled: true });
   }
 
   render() {
@@ -61,12 +70,15 @@ class LeftMenu extends React.Component {
                   key="sub1"
                   title={
                     <span>
-                      <Icon type="user" />
+                      <Icon
+                        style={{ verticalAlign: "0.125em" }}
+                        type="folder"
+                      />
                       Общие папки
                     </span>
                   }
                 >
-                  <Menu.Item key="1" onClick={this.mountLeadsForm}>
+                  <Menu.Item key="1" onClick={this.mountLeadsForm.bind(this)}>
                     Служебные записки
                   </Menu.Item>
                   <Menu.Item key="2">Договоры</Menu.Item>
@@ -84,7 +96,7 @@ class LeftMenu extends React.Component {
                   key="sub2"
                   title={
                     <span>
-                      <Icon type="notification" />
+                      <Icon type="star" style={{ verticalAlign: "0.125em" }} />
                       Избранное
                     </span>
                   }
@@ -98,7 +110,7 @@ class LeftMenu extends React.Component {
                   key="sub4"
                   title={
                     <span>
-                      <Icon type="laptop" />
+                      <Icon type="user" style={{ verticalAlign: "0.125em" }} />
                       Мои документы
                     </span>
                   }
@@ -112,48 +124,30 @@ class LeftMenu extends React.Component {
                   key="sub5"
                   title={
                     <span>
-                      <Icon type="laptop" />
+                      <Icon
+                        type="laptop"
+                        style={{ verticalAlign: "0.125em" }}
+                      />
                       Договоры
                     </span>
                   }
-                >
-                  {/*<Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>*/}
-                </SubMenu>
-                <SubMenu
-                  key="sub6"
-                  title={
-                    <span>
-                      <Icon type="laptop" />
-                      Результаты поиска
-                    </span>
-                  }
-                >
-                  {/*<Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>*/}
-                </SubMenu>
-                <SubMenu
-                  key="sub7"
-                  title={
-                    <span>
-                      <Icon type="laptop" />
-                      Корзина
-                    </span>
-                  }
-                >
-                  {/*<Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>*/}
-                </SubMenu>
+                />
+
+                <Menu.Item>
+                  <Icon
+                    type="file-search"
+                    style={{ verticalAlign: "0.125em" }}
+                  />
+                  <span>Результаты поиска</span>
+                </Menu.Item>
+                <Menu.Item>
+                  <Icon type="delete" style={{ verticalAlign: "0.125em" }} />
+                  <span>Корзина</span>
+                </Menu.Item>
               </Menu>
             </Sider>
             <Content style={{ padding: "0 24px", minHeight: 280 }}>
-              <Form />
+              {!this.state.leadsCalled ? <Form /> : <Leads />}
             </Content>
           </Layout>
         </Content>

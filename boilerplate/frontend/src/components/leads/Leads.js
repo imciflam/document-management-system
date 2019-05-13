@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getLeads, deleteLead } from "../../actions/leads";
 
+import { Pagination } from "antd";
 export class Leads extends Component {
   static propTypes = {
     leads: PropTypes.array.isRequired,
@@ -57,6 +58,16 @@ export class Leads extends Component {
             ))}
           </tbody>
         </table>
+        <Pagination
+          defaultPageSize={15}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+          showSizeChanger
+          pageSizeOptions={["15", "30", "40", "50", "100"]}
+        />
       </Fragment>
     );
   }
