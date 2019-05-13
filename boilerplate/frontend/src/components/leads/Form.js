@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addLead } from "../../actions/leads";
 import { Upload, Icon, message } from "antd";
-import { withRouter } from "react-router-dom";
 
 const Dragger = Upload.Dragger;
-
+var fileDocument;
 const props = {
   name: "file",
   multiple: true,
@@ -14,7 +13,9 @@ const props = {
   onChange(info) {
     const status = info.file.status;
     if (status !== "uploading") {
-      console.log(info.file, info.fileList);
+      //console.log(info.file, info.fileList);
+      console.log(info.fileList[0].name);
+      fileDocument = info.fileList[0].name;
     }
     if (status === "done") {
       message.success(`${info.file.name} успешно загружен.`);
@@ -40,15 +41,15 @@ export class Form extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { documentCode: "акт", documentStageCode: "черновик" };
+    this.state = {
+      documentCode: "служебная записка",
+      documentStageCode: "черновик"
+    };
     this.fileInput = React.createRef();
   }
 
   //any name will match, same with value
   onChange = e => this.setState({ [e.target.name]: e.target.value });
-
-  onFileChange = e =>
-    this.setState({ [e.target.name]: this.fileInput.current.files[0].name });
 
   onSubmit = e => {
     e.preventDefault();
@@ -59,7 +60,6 @@ export class Form extends Component {
       email,
       message
     } = this.state;
-    let fileDocument = this.fileInput.current.files[0];
     const lead = {
       documentCode,
       documentStageCode,
@@ -75,8 +75,8 @@ export class Form extends Component {
       email: "",
       message: ""
     });
-    console.log(this.fileInput.current.files[0]);
-    alert(`Selected file - ${this.fileInput.current.files[0].name}`);
+    // console.log(this.fileInput.current.files[0]);
+    // alert(`Selected file - ${this.fileInput.current.files[0].name}`);
   };
 
   render() {
@@ -100,8 +100,8 @@ export class Form extends Component {
               value={documentCode}
               onChange={this.onChange}
             >
-              <option value="акт">акт</option>
-              <option value="договор">договор</option>
+              <option value="служебная записка">служебная записка</option>
+              {/* { <option value="договор">договор</option>
               <option value="контракт">контракт</option>
               <option value="распоряжение">распоряжение</option>
               <option value="счет">счет</option>
@@ -109,7 +109,7 @@ export class Form extends Component {
               <option value="платежные поручения">платежные поручения</option>
               <option value="протокол">протокол</option>
               <option value="приказ">приказ</option>
-              <option value="докладная">докладная</option>
+              <option value="докладная">докладная</option>} */}
             </select>
           </div>
           <div className="form-group">

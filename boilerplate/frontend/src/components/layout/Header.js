@@ -18,7 +18,12 @@ export class Header extends Component {
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
           <strong>{user ? `Добро пожаловать, ${user.username}` : ""}</strong>
-          <Avatar size={35}>
+          <Avatar
+            size={35}
+            style={{
+              marginLeft: "10px"
+            }}
+          >
             {user ? `${user.username.slice(0, 1)}` : ""}
           </Avatar>
         </span>

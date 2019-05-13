@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getLeads, deleteLead } from "../../actions/leads";
 
+var FileSaver = require("file-saver");
+
 import { Pagination } from "antd";
 export class Leads extends Component {
   static propTypes = {
@@ -10,9 +12,16 @@ export class Leads extends Component {
     getLeads: PropTypes.func.isRequired,
     deleteLead: PropTypes.func.isRequired
   };
-
   componentDidMount() {
     this.props.getLeads();
+  }
+
+  onClick(j) {
+    var blob = new Blob(["1"], {
+      type: "text/plain;charset=utf-8"
+    });
+    console.log(j);
+    FileSaver.saveAs(blob, j);
   }
 
   render() {
@@ -43,7 +52,13 @@ export class Leads extends Component {
                 <td>{lead.name}</td>
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
-                <td>{lead.fileDocument}</td>
+                <td>
+                  <a>
+                    <u onClick={() => this.onClick(lead.fileDocument)}>
+                      {lead.fileDocument}
+                    </u>
+                  </a>
+                </td>
                 <td>{lead.created_at.slice(0, -17)}</td>
                 <td>
                   <button
@@ -59,7 +74,8 @@ export class Leads extends Component {
           </tbody>
         </table>
         <Pagination
-          defaultPageSize={15}
+          defaultCurrent={1}
+          total={50}
           style={{
             display: "flex",
             justifyContent: "center",
