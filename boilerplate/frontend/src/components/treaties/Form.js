@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addTreaty } from "../../actions/treaties";
-import { Upload, Icon, message } from "antd";
+import { Upload, Icon, message, DatePicker } from "antd";
 
 const Dragger = Upload.Dragger;
-var fileDocument;
 const props = {
   name: "file",
   multiple: true,
@@ -42,10 +41,16 @@ export class FormForTreaties extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contractCode: "служебная записка",
+      contractCode: "контракт",
       contractStageCode: "черновик"
     };
     this.fileInput = React.createRef();
+  }
+
+  onDatepickerChange(date, dateString) {
+    console.log(date);
+    console.log(dateString);
+    this.setState({ dateOfSigning: dateString });
   }
 
   //any name will match, same with value
@@ -107,7 +112,7 @@ export class FormForTreaties extends Component {
               value={contractCode}
               onChange={this.onChange}
             >
-              <option value="служебная записка">контракт</option>
+              <option value="контракт">контракт</option>
             </select>
           </div>
           <div className="form-group">
@@ -161,13 +166,7 @@ export class FormForTreaties extends Component {
           </div>
           <div className="form-group">
             <label>Дата подписания</label>
-            <input
-              className="form-control"
-              type="text"
-              name="dateOfSigning"
-              onChange={this.onChange}
-              value={dateOfSigning}
-            />
+            <DatePicker onChange={this.onDatepickerChange.bind(this)} />
           </div>
 
           <div className="form-group">
