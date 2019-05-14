@@ -125,3 +125,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+boilerplate/db.sqlite3
+boilerplate/frontend/static/frontend/main.js

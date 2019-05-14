@@ -8,17 +8,22 @@ const SubMenu = Menu.SubMenu;
 import Form from "../leads/Form";
 import Leads from "../leads/Leads";
 
-const MyComponent = ({ name }) => {
-  if (name) {
-    return <div className="hello">Привет, {name}</div>;
+const MyComponent = ({ leadsCalled }) => {
+  console.log(leadsCalled);
+  switch (leadsCalled) {
+    case "mountNewNote":
+      return <Form />;
+    case "mountLeadsForm":
+      return <Leads />;
+    default:
+      return <Leads />;
   }
-  return <div className="hello">Пожалуйста, войдите в ваш аккаунт</div>;
 };
 
 class LeftMenu extends React.Component {
   state = {
     collapsed: false,
-    leadsCalled: false
+    leadsCalled: "mountNewNote"
   };
 
   onCollapse = collapsed => {
@@ -30,8 +35,11 @@ class LeftMenu extends React.Component {
     alert("document");
   }
 
+  mountNewNote() {
+    this.setState({ leadsCalled: "mountNewNote" });
+  }
   mountLeadsForm() {
-    this.setState({ leadsCalled: true });
+    this.setState({ leadsCalled: "mountLeadsForm" });
   }
 
   render() {
@@ -45,9 +53,11 @@ class LeftMenu extends React.Component {
             defaultSelectedKeys={["1"]}
             style={{ lineHeight: "64px" }}
           >
-            <Menu.Item key="1">Новое сообщение</Menu.Item>
+            <Menu.Item key="1" onClick={this.mountNewNote.bind(this)}>
+              Новая записка
+            </Menu.Item>
             <Menu.Item key="2" onClick={this.mountDocumentForm}>
-              Новый документ
+              Новый договор
             </Menu.Item>
             <Menu.Item key="3">Сформировать отчет</Menu.Item>
           </Menu>
@@ -147,7 +157,7 @@ class LeftMenu extends React.Component {
               </Menu>
             </Sider>
             <Content style={{ padding: "0 24px", minHeight: 280 }}>
-              {!this.state.leadsCalled ? <Form /> : <Leads />}
+              <MyComponent leadsCalled={this.state.leadsCalled} />
             </Content>
           </Layout>
         </Content>
