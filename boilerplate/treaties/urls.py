@@ -1,7 +1,8 @@
 from rest_framework import routers
-from .api import LeadViewSet
+from .api import TreatyViewSet
 from django.conf.urls import url
 router = routers.DefaultRouter()
-router.register('api/leads', LeadViewSet, 'leads')
+router.register('api/treaties', TreatyViewSet, 'treaties')
  
+
 urlpatterns = router.urls
