@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getTreaties, deleteTreaty } from "../../actions/treaties";
+import TreatyChild from "./TreatyChild";
 
 var FileSaver = require("file-saver");
 
@@ -16,11 +17,16 @@ export class Treaties extends Component {
     this.props.getTreaties();
   }
 
+  onClick(treaty) {
+    console.log(treaty);
+    <TreatyChild treatyFromParent={treaty} />;
+  }
+
   render() {
     console.log(this.props.treaties);
     return (
       <Fragment>
-        <h2>Мои договоры</h2>
+        <h2 id="dogs">Мои договоры</h2>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -30,20 +36,20 @@ export class Treaties extends Component {
               <th>Код контрагента</th>
               <th>Сумма</th>
               <th>Дата подписания</th>
-              <th>Место хранения</th>
               <th />
             </tr>
           </thead>
           <tbody>
             {this.props.treaties.map(treaty => (
               <tr key={treaty.id}>
-                <td>{treaty.id}</td>
+                <td onClick={this.onClick.bind(this, treaty)}>
+                  <u>{treaty.id}</u>
+                </td>
                 <td>{treaty.contractCode}</td>
                 <td>{treaty.contractStageCode}</td>
                 <td>{treaty.counteragentCode}</td>
                 <td>{treaty.sumMoney}</td>
-                <td>{treaty.placeOfStorage}</td>
-                <td>{treaty.created_at.slice(0, -17)}</td>
+                <td>{treaty.dateOfSigning}</td>
                 <td>
                   <button
                     onClick={this.props.deleteTreaty.bind(this, treaty.id)}

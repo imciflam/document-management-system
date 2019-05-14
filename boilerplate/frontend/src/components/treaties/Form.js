@@ -5,6 +5,7 @@ import { addTreaty } from "../../actions/treaties";
 import { Upload, Icon, message, DatePicker } from "antd";
 
 const Dragger = Upload.Dragger;
+var fileDocument;
 const props = {
   name: "file",
   multiple: true,
@@ -80,10 +81,24 @@ export class FormForTreaties extends Component {
       contractType,
       placeOfStorage,
       requisite,
-      periodOfValidity
+      periodOfValidity,
+      fileDocument
     };
     this.props.addTreaty(treaty);
     console.log(treaty);
+    this.setState({
+      contractCode: "",
+      contractStageCode: "",
+      counteragentCode: "",
+      sumMoney: "",
+      sumNDS: "",
+      dateOfSigning: "",
+      contractType: "",
+      placeOfStorage: "",
+      periodOfValidity: "",
+      requisite: "",
+      periodOfValidity: ""
+    });
   };
 
   render() {
@@ -166,18 +181,28 @@ export class FormForTreaties extends Component {
           </div>
           <div className="form-group">
             <label>Дата подписания</label>
+            <br />
             <DatePicker onChange={this.onDatepickerChange.bind(this)} />
           </div>
 
           <div className="form-group">
             <label>Вид договора</label>
-            <input
+            <select
               className="form-control"
-              type="text"
+              id="contractType"
               name="contractType"
-              onChange={this.onChange}
               value={contractType}
-            />
+              onChange={this.onChange}
+            >
+              <option value="предварительный">предварительный</option>
+              <option value="основной">основной</option>
+              <option value="дополнительный">дополнительный</option>
+              <option value="возмездный">возмездный</option>
+              <option value="безвоздмездный">безвоздмездный</option>
+              <option value="двусторонний">двусторонний</option>
+              <option value="многосторонний">многосторонний</option>
+              <option value="взаимный">взаимный</option>
+            </select>
           </div>
 
           <div className="form-group">
@@ -212,6 +237,19 @@ export class FormForTreaties extends Component {
               value={periodOfValidity}
             />
           </div>
+
+          <label>Приложение</label>
+          <Dragger {...props}>
+            <p className="ant-upload-drag-icon">
+              <Icon type="inbox" />
+            </p>
+            <p className="ant-upload-text">
+              Кликните или перетащите файлы сюда.
+            </p>
+            <p className="ant-upload-hint">
+              Возможно приложить несколько файлов.
+            </p>
+          </Dragger>
 
           <br />
           <div className="form-group">

@@ -13,6 +13,7 @@ class Treaty(models.Model):
     placeOfStorage = models.CharField(max_length=500, blank=True)
     requisite = models.CharField(max_length=500, blank=True)
     periodOfValidity = models.CharField(max_length=500, blank=True)
+    fileDocument = models.CharField(max_length=500, blank=True)
     owner = models.ForeignKey(
     User, related_name="treaties", on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -9,6 +9,7 @@ class Lead(models.Model):
     email = models.CharField(max_length=100, blank=True)
     message = models.CharField(max_length=500, blank=True)
     fileDocument = models.CharField(max_length=500, blank=True)
+    noteText = models.CharField(max_length=500, blank=True)
     owner = models.ForeignKey(
         User, related_name="leads", on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

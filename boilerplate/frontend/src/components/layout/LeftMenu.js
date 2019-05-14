@@ -70,7 +70,14 @@ class LeftMenu extends React.Component {
             <Menu.Item key="2" onClick={this.mountNewTreatyForm.bind(this)}>
               Новый договор
             </Menu.Item>
-            <Menu.Item key="3">Сформировать отчет</Menu.Item>
+            <Menu.Item
+              key="3"
+              onClick={() => {
+                alert("в разработке");
+              }}
+            >
+              Сформировать отчет
+            </Menu.Item>
             <Menu.Item key="4">На контроле</Menu.Item>
           </Menu>
         </Header>
@@ -104,15 +111,78 @@ class LeftMenu extends React.Component {
                   >
                     Договоры
                   </Menu.Item>
-                  <Menu.Item key="3">Задачи секретариата</Menu.Item>
-                  <Menu.Item key="4">Запуск проектов</Menu.Item>
-                  <Menu.Item key="5">Заявления на отпуск</Menu.Item>
-                  <Menu.Item key="6">Клиенты</Menu.Item>
-                  <Menu.Item key="7">Мои договоры</Menu.Item>
-                  <Menu.Item key="8">Мои клиенты</Menu.Item>
-                  <Menu.Item key="9">Мои служебные записки</Menu.Item>
-                  <Menu.Item key="10">Общие документы</Menu.Item>
-                  <Menu.Item key="11">СЗ в ПрОФ</Menu.Item>
+                  <Menu.Item
+                    key="3"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Задачи секретариата
+                  </Menu.Item>
+                  <Menu.Item
+                    key="4"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Запуск проектов
+                  </Menu.Item>
+                  <Menu.Item
+                    key="5"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Заявления на отпуск
+                  </Menu.Item>
+                  <Menu.Item
+                    key="6"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Клиенты
+                  </Menu.Item>
+                  <Menu.Item
+                    key="7"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Мои договоры
+                  </Menu.Item>
+                  <Menu.Item
+                    key="8"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Мои клиенты
+                  </Menu.Item>
+                  <Menu.Item
+                    key="9"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Мои служебные записки
+                  </Menu.Item>
+                  <Menu.Item
+                    key="10"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    Общие документы
+                  </Menu.Item>
+                  <Menu.Item
+                    key="11"
+                    onClick={() => {
+                      alert("в разработке");
+                    }}
+                  >
+                    СЗ в ПрОФ
+                  </Menu.Item>
                 </SubMenu>
                 <SubMenu
                   key="sub2"
@@ -145,7 +215,11 @@ class LeftMenu extends React.Component {
                   }
                 />
 
-                <Menu.Item>
+                <Menu.Item
+                  onClick={() => {
+                    alert("в разработке");
+                  }}
+                >
                   <Icon
                     type="file-search"
                     style={{ verticalAlign: "0.125em" }}

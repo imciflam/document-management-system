@@ -32,6 +32,7 @@ export class Form extends Component {
     name: "",
     email: "",
     message: "",
+    noteText: "",
     fileDocument: ""
   };
 
@@ -58,7 +59,8 @@ export class Form extends Component {
       documentStageCode,
       name,
       email,
-      message
+      message,
+      noteText
     } = this.state;
     const lead = {
       documentCode,
@@ -66,14 +68,16 @@ export class Form extends Component {
       name,
       email,
       message,
-      fileDocument
+      fileDocument,
+      noteText
     };
     this.props.addLead(lead);
     console.log(lead);
     this.setState({
       name: "",
       email: "",
-      message: ""
+      message: "",
+      noteText: ""
     });
     // console.log(this.fileInput.current.files[0]);
     // alert(`Selected file - ${this.fileInput.current.files[0].name}`);
@@ -85,7 +89,8 @@ export class Form extends Component {
       documentStageCode,
       name,
       email,
-      message
+      message,
+      noteText
     } = this.state;
     return (
       <div className="card card-body mt-4 mb-4 w-75 mx-auto">
@@ -153,12 +158,23 @@ export class Form extends Component {
           </div>
           <div className="form-group">
             <label>Источник</label>
-            <textarea
+            <input
               className="form-control"
               type="text"
               name="message"
               onChange={this.onChange}
               value={message}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Источник</label>
+            <textarea
+              className="form-control"
+              type="text"
+              name="noteText"
+              onChange={this.onChange}
+              value={noteText}
             />
           </div>
           {/*<div className="form-group">
@@ -170,6 +186,7 @@ export class Form extends Component {
               onChange={this.onFileChange}
             />
     </div>*/}
+          <label>Приложение</label>
           <Dragger {...props}>
             <p className="ant-upload-drag-icon">
               <Icon type="inbox" />
