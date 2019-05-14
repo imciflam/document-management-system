@@ -8,13 +8,20 @@ const SubMenu = Menu.SubMenu;
 import Form from "../leads/Form";
 import Leads from "../leads/Leads";
 
+import FormForTreaties from "../treaties/Form";
+import Treaties from "../treaties/Treaties";
+
 const MyComponent = ({ leadsCalled }) => {
   console.log(leadsCalled);
   switch (leadsCalled) {
-    case "mountNewNote":
+    case "mountNewNoteForm":
       return <Form />;
     case "mountLeadsForm":
       return <Leads />;
+    case "mountNewTreatyForm":
+      return <FormForTreaties />;
+    case "mountTreatiesForm":
+      return <Treaties />;
     default:
       return <Leads />;
   }
@@ -23,7 +30,7 @@ const MyComponent = ({ leadsCalled }) => {
 class LeftMenu extends React.Component {
   state = {
     collapsed: false,
-    leadsCalled: "mountNewNote"
+    leadsCalled: "mountNewNoteForm"
   };
 
   onCollapse = collapsed => {
@@ -31,15 +38,19 @@ class LeftMenu extends React.Component {
     this.setState({ collapsed });
   };
 
-  mountDocumentForm() {
-    alert("document");
+  mountNewTreatyForm() {
+    this.setState({ leadsCalled: "mountNewTreatyForm" });
   }
 
   mountNewNote() {
-    this.setState({ leadsCalled: "mountNewNote" });
+    this.setState({ leadsCalled: "mountNewNoteForm" });
   }
   mountLeadsForm() {
     this.setState({ leadsCalled: "mountLeadsForm" });
+  }
+
+  mountTreatiesForm() {
+    this.setState({ leadsCalled: "mountTreatiesForm" });
   }
 
   render() {
@@ -56,18 +67,14 @@ class LeftMenu extends React.Component {
             <Menu.Item key="1" onClick={this.mountNewNote.bind(this)}>
               Новая записка
             </Menu.Item>
-            <Menu.Item key="2" onClick={this.mountDocumentForm}>
+            <Menu.Item key="2" onClick={this.mountNewTreatyForm.bind(this)}>
               Новый договор
             </Menu.Item>
             <Menu.Item key="3">Сформировать отчет</Menu.Item>
+            <Menu.Item key="4">На контроле</Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>
-          {/*<Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>List</Breadcrumb.Item>
-        <Breadcrumb.Item>App</Breadcrumb.Item>
-    </Breadcrumb>*/}
           <Layout style={{ padding: "24px 0", background: "#fff" }}>
             <Sider width={200} style={{ background: "#fff" }}>
               <Menu
@@ -91,7 +98,12 @@ class LeftMenu extends React.Component {
                   <Menu.Item key="1" onClick={this.mountLeadsForm.bind(this)}>
                     Служебные записки
                   </Menu.Item>
-                  <Menu.Item key="2">Договоры</Menu.Item>
+                  <Menu.Item
+                    key="2"
+                    onClick={this.mountTreatiesForm.bind(this)}
+                  >
+                    Договоры
+                  </Menu.Item>
                   <Menu.Item key="3">Задачи секретариата</Menu.Item>
                   <Menu.Item key="4">Запуск проектов</Menu.Item>
                   <Menu.Item key="5">Заявления на отпуск</Menu.Item>
@@ -110,12 +122,7 @@ class LeftMenu extends React.Component {
                       Избранное
                     </span>
                   }
-                >
-                  {/*<Menu.Item key="5">option5</Menu.Item>
-                  <Menu.Item key="6">option6</Menu.Item>
-                  <Menu.Item key="7">option7</Menu.Item>
-                <Menu.Item key="8">option8</Menu.Item>*/}
-                </SubMenu>
+                />
                 <SubMenu
                   key="sub4"
                   title={
@@ -124,12 +131,7 @@ class LeftMenu extends React.Component {
                       Мои документы
                     </span>
                   }
-                >
-                  {/*<Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>*/}
-                </SubMenu>
+                />
                 <SubMenu
                   key="sub5"
                   title={

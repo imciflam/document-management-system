@@ -11,6 +11,10 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
-export const CLEAR_LEADS = 'CLEAR_LEADS';
+export const CLEAR_LEADS = "CLEAR_LEADS";
+export const GET_TREATIES = "GET_TREATIES";
+export const DELETE_TREATY = "DELETE_TREATY";
+export const ADD_TREATY = "ADD_TREATY";
+export const CLEAR_TREATIES = "CLEAR_TREATIES";
 
 //for organisation
