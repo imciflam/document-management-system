@@ -42,7 +42,7 @@ export class FormForTreaties extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contractCode: "контракт",
+      contractCode: "договор",
       contractStageCode: "черновик"
     };
     this.fileInput = React.createRef();
@@ -116,19 +116,19 @@ export class FormForTreaties extends Component {
     } = this.state;
     return (
       <div className="card card-body mt-4 mb-4 w-75 mx-auto">
-        <h2>Добавить контракт</h2>
+        <h2>Добавить договор</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label htmlFor="contractCode">Тип контракта</label>
-            <select
-              className="form-control"
+            <label htmlFor="contractCode">Тип документа</label>
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext"
+              id="staticEmail"
+              value="договор"
               id="contractCode"
               name="contractCode"
-              value={contractCode}
-              onChange={this.onChange}
-            >
-              <option value="контракт">контракт</option>
-            </select>
+            />
           </div>
           <div className="form-group">
             <label htmlFor="contractStageCode">Этап</label>

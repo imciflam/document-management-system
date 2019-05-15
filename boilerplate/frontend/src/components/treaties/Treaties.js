@@ -8,6 +8,14 @@ var FileSaver = require("file-saver");
 
 import { Pagination } from "antd";
 export class Treaties extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showPopup: false,
+      treatiesData: ""
+    };
+  }
+
   static propTypes = {
     treaties: PropTypes.array.isRequired,
     getTreaties: PropTypes.func.isRequired,
@@ -19,19 +27,21 @@ export class Treaties extends Component {
 
   onClick(treaty) {
     console.log(treaty);
-    <TreatyChild treatyFromParent={treaty} />;
+    this.setState({
+      showPopup: true,
+      treatiesData: treaty
+    });
   }
 
   render() {
-    console.log(this.props.treaties);
     return (
       <Fragment>
-        <h2 id="dogs">Мои договоры</h2>
+        <h2>Мои договоры</h2>
         <table className="table table-striped">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Тип контракта</th>
+              <th>Тип документа</th>
               <th>Этап</th>
               <th>Код контрагента</th>
               <th>Сумма</th>
@@ -74,6 +84,9 @@ export class Treaties extends Component {
           showSizeChanger
           pageSizeOptions={["15", "30", "40", "50", "100"]}
         />
+        {this.state.showPopup ? (
+          <TreatyChild treatyFromParent={this.state.treatiesData} />
+        ) : null}
       </Fragment>
     );
   }
