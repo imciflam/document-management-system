@@ -38,6 +38,7 @@ export class Leads extends Component {
               <th>Предмет</th>
               <th>Получатель</th>
               <th>Источник</th>
+              <th>Файл</th>
               <th>Дата</th>
               <th />
             </tr>

@@ -168,7 +168,7 @@ export class Form extends Component {
           </div>
 
           <div className="form-group">
-            <label>Источник</label>
+            <label>Текст записки</label>
             <textarea
               className="form-control"
               type="text"

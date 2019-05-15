@@ -30,7 +30,7 @@ export class TreatyChild extends Component {
                 value={this.props.treatyFromParent.contractCode}
               />
             </div>
-
+            <hr />
             <label class="col-sm-2 col-form-label">Тип документа</label>
             <div class="col-sm-10">
               <input
@@ -147,7 +147,7 @@ export class TreatyChild extends Component {
                 type="text"
                 readonly
                 class="form-control-plaintext"
-                value="010101010"
+                value="0375791010"
               />
             </div>
 
@@ -157,7 +157,7 @@ export class TreatyChild extends Component {
                 type="text"
                 readonly
                 class="form-control-plaintext"
-                value="01010101001"
+                value="01036468001"
               />
             </div>
 
