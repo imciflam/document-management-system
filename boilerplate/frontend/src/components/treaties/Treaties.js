@@ -66,7 +66,7 @@ export class Treaties extends Component {
                     className="btn btn-danger btn-sm"
                   >
                     {" "}
-                    Удалить
+                    В архив
                   </button>
                 </td>
               </tr>
