@@ -11,6 +11,8 @@ import Leads from "../leads/Leads";
 import FormForTreaties from "../treaties/Form";
 import Treaties from "../treaties/Treaties";
 
+import FormForDiscipline from "../discipline/Form";
+
 const MyComponent = ({ leadsCalled }) => {
   console.log(leadsCalled);
   switch (leadsCalled) {
@@ -22,6 +24,8 @@ const MyComponent = ({ leadsCalled }) => {
       return <FormForTreaties />;
     case "mountTreatiesForm":
       return <Treaties />;
+    case "mountTasksForm":
+      return <FormForDiscipline />;
     default:
       return <Leads />;
   }
@@ -53,6 +57,10 @@ class LeftMenu extends React.Component {
     this.setState({ leadsCalled: "mountTreatiesForm" });
   }
 
+  mountTasksForm() {
+    this.setState({ leadsCalled: "mountTasksForm" });
+  }
+
   render() {
     return (
       <Layout>
@@ -78,7 +86,9 @@ class LeftMenu extends React.Component {
             >
               Сформировать отчет
             </Menu.Item>
-            <Menu.Item key="4">На контроле</Menu.Item>
+            <Menu.Item key="4" onClick={this.mountTasksForm.bind(this)}>
+              Задачи
+            </Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>
