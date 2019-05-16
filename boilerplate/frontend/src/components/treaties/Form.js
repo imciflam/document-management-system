@@ -96,8 +96,7 @@ export class FormForTreaties extends Component {
       contractType: "",
       placeOfStorage: "",
       periodOfValidity: "",
-      requisite: "",
-      periodOfValidity: ""
+      requisite: ""
     });
   };
 
