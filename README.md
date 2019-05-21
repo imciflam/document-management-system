@@ -10,7 +10,7 @@ for local development:
 
 4. pipenv install django djangorestframework django-rest-knox
 
-5. npm i //yikes
+5. npm i
 
 6.1.2. cd boilerplate
 
