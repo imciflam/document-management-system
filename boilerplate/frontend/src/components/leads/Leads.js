@@ -2,11 +2,20 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getLeads, deleteLead } from "../../actions/leads";
+import Searcher from "./Searcher";
 
 var FileSaver = require("file-saver");
 
 import { Pagination } from "antd";
 export class Leads extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: null,
+      active: 0,
+      term: ""
+    };
+  }
   static propTypes = {
     leads: PropTypes.array.isRequired,
     getLeads: PropTypes.func.isRequired,
@@ -14,6 +23,10 @@ export class Leads extends Component {
   };
   componentDidMount() {
     this.props.getLeads();
+  }
+
+  updateData(config) {
+    this.setState(config);
   }
 
   onClick(j) {
@@ -27,8 +40,11 @@ export class Leads extends Component {
   render() {
     console.log(this.props.leads);
     return (
-      <Fragment>
+      <Fragment >
         <h2>Мои записки</h2>
+        <Searcher
+          leadsFromParent={this.props.leads}
+        />
         <table className="table table-striped">
           <thead>
             <tr>

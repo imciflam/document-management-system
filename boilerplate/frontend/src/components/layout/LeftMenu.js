@@ -238,7 +238,7 @@ class LeftMenu extends React.Component {
                 </Menu.Item>
                 <Menu.Item>
                   <Icon type="delete" style={{ verticalAlign: "0.125em" }} />
-                  <span>Корзина</span>
+                  <span>Архив</span>
                 </Menu.Item>
               </Menu>
             </Sider>
