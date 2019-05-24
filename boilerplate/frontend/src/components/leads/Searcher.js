@@ -32,7 +32,7 @@ export class Searcher extends Component {
             value={term}
             type="text"
             className="form-control"
-            placeholder="Поиск записок по предмету..."
+            placeholder="Поиск по предмету записки..."
             onChange={this.dataSearch}
           />
         </div>

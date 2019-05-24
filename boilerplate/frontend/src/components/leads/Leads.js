@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getLeads, deleteLead } from "../../actions/leads";
+import { getLeads } from "../../actions/leads";
 import Searcher from "./Searcher";
-
-var FileSaver = require("file-saver");
-
 import { Pagination } from "antd";
+import LeadItem from "./LeadItem";
 export class Leads extends Component {
   constructor() {
     super();
@@ -18,8 +16,7 @@ export class Leads extends Component {
   }
   static propTypes = {
     leads: PropTypes.array.isRequired,
-    getLeads: PropTypes.func.isRequired,
-    deleteLead: PropTypes.func.isRequired
+    getLeads: PropTypes.func.isRequired
   };
   componentDidMount() {
     this.props.getLeads();
@@ -29,22 +26,25 @@ export class Leads extends Component {
     this.setState(config);
   }
 
-  onClick(j) {
-    var blob = new Blob(["1"], {
-      type: "text/plain;charset=utf-8"
-    });
-    console.log(j);
-    FileSaver.saveAs(blob, j);
-  }
-
   render() {
-    console.log(this.props.leads);
-    return (
-      <Fragment >
-        <h2>Мои записки</h2>
-        <Searcher
-          leadsFromParent={this.props.leads}
+    const leads = this.props.leads.map(lead => {
+      return (
+        <LeadItem
+          id={lead.id}
+          documentCode={lead.documentCode}
+          documentStageCode={lead.documentStageCode}
+          name={lead.name}
+          email={lead.email}
+          message={lead.message}
+          fileDocument={lead.fileDocument}
+          created_at={lead.created_at.slice(0, -17)}
         />
+      );
+    });
+    return (
+      <Fragment>
+        <h2>Мои записки</h2>
+        <Searcher leadsFromParent={this.props.leads} />
         <table className="table table-striped">
           <thead>
             <tr>
@@ -59,35 +59,7 @@ export class Leads extends Component {
               <th />
             </tr>
           </thead>
-          <tbody>
-            {this.props.leads.map(lead => (
-              <tr key={lead.id}>
-                <td>{lead.id}</td>
-                <td>{lead.documentCode}</td>
-                <td>{lead.documentStageCode}</td>
-                <td>{lead.name}</td>
-                <td>{lead.email}</td>
-                <td>{lead.message}</td>
-                <td>
-                  <a>
-                    <u onClick={() => this.onClick(lead.fileDocument)}>
-                      {lead.fileDocument}
-                    </u>
-                  </a>
-                </td>
-                <td>{lead.created_at.slice(0, -17)}</td>
-                <td>
-                  <button
-                    onClick={this.props.deleteLead.bind(this, lead.id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    {" "}
-                    В архив
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          <tbody>{leads}</tbody>
         </table>
         <Pagination
           defaultCurrent={1}
@@ -113,5 +85,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getLeads, deleteLead }
+  { getLeads }
 )(Leads);
