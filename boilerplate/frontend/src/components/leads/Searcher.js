@@ -14,18 +14,24 @@ export class Searcher extends Component {
     };
   }
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: e.target.value,
+      data: this.props.leadsFromParent
+    });
     const value = e.target.value.toLowerCase();
-    console.log(value);
-    const filter = this.props.leadsFromParent.filter(user => {
+    console.log(this.state);
+    const filter = this.state.data.filter(user => {
       return user.name.toLowerCase().includes(value);
     });
     console.log(filter);
+    this.setState({
+      data: filter
+    });
+    this.props.rerenderParentCallback();
   };
 
   render() {
-    const { term, data } = this.state;
-    console.log(this.props.leadsFromParent);
+    const { term } = this.state;
     return (
       <div>
         <div className="searchbar form-group">

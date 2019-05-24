@@ -8,6 +8,8 @@ import LeadItem from "./LeadItem";
 export class Leads extends Component {
   constructor() {
     super();
+    this.rerenderParentCallback = this.rerenderParentCallback.bind(this);
+
     this.state = {
       data: null,
       active: 0,
@@ -26,6 +28,10 @@ export class Leads extends Component {
     this.setState(config);
   }
 
+  rerenderParentCallback() {
+    this.forceUpdate();
+  }
+
   render() {
     const leads = this.props.leads.map(lead => {
       return (
@@ -38,13 +44,17 @@ export class Leads extends Component {
           message={lead.message}
           fileDocument={lead.fileDocument}
           created_at={lead.created_at.slice(0, -17)}
+          update={this.updateData.bind(this)}
         />
       );
     });
     return (
       <Fragment>
         <h2>Мои записки</h2>
-        <Searcher leadsFromParent={this.props.leads} />
+        <Searcher
+          leadsFromParent={this.props.leads}
+          rerenderParentCallback={this.rerenderParentCallback}
+        />
         <table className="table table-striped">
           <thead>
             <tr>
