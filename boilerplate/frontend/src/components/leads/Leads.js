@@ -14,20 +14,21 @@ export class Leads extends Component {
     this.props.getLeads();
   }
 
+  componentWillMount() {
+    this.props.getLeads();
+  }
   componentDidMount() {
-    const fkndata = this.props.getLeads();
-    console.log(fkndata);
     this.setState({ data: this.props.leads });
   }
 
   search(e) {
     this.state.searchTerm = e.target.value;
     let regexp = new RegExp(e.target.value, "i");
-    let matching = this.state.data.map(elem => {
+    let matching = this.props.leads.map(elem => {
       elem.match = regexp.test(elem.name);
       return elem;
     });
-
+    console.log(matching);
     this.setState({
       data: matching
     });
@@ -50,8 +51,10 @@ export class Leads extends Component {
     //     />
     //   );
     // });
-    console.log(this.props.leads);
+    console.log("+");
+    console.log(this.props);
     console.log(this.state);
+    console.log("+");
     return (
       <Fragment>
         <h2>Мои записки</h2>
