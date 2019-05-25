@@ -15,25 +15,27 @@ export class LeadItem extends Component {
 
   render() {
     console.log(this.props);
+    let lead = this.props.lead;
+
     return (
-      <tr key={this.props.id}>
-        <td>{this.props.id}</td>
-        <td>{this.props.documentCode}</td>
-        <td>{this.props.documentStageCode}</td>
-        <td>{this.props.name}</td>
-        <td>{this.props.email}</td>
-        <td>{this.props.message}</td>
+      <tr key={lead.id}>
+        <td>{lead.id}</td>
+        <td>{lead.documentCode}</td>
+        <td>{lead.documentStageCode}</td>
+        <td>{lead.name}</td>
+        <td>{lead.email}</td>
+        <td>{lead.message}</td>
         <td>
           <a>
-            <u onClick={() => this.onClick(this.props.fileDocument)}>
-              {this.props.fileDocument}
+            <u onClick={() => this.onClick(lead.fileDocument)}>
+              {lead.fileDocument}
             </u>
           </a>
         </td>
-        <td>{this.props.created_at}</td>
+        <td>{lead.created_at.slice(0, -17)}</td>
         <td>
           <button
-            onClick={this.props.deleteLead.bind(this, this.props.id)}
+            onClick={this.props.deleteLead.bind(this, lead.id)}
             className="btn btn-danger btn-sm"
           >
             {" "}

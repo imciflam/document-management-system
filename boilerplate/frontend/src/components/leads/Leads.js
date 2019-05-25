@@ -1,87 +1,65 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { getLeads } from "../../actions/leads";
 import Searcher from "./Searcher";
-import { Pagination } from "antd";
-import LeadItem from "./LeadItem";
-export class Leads extends Component {
-  constructor() {
-    super();
-    this.rerenderParentCallback = this.rerenderParentCallback.bind(this);
+import LeadList from "./LeadList";
 
+export class Leads extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      data: null,
-      active: 0,
-      term: ""
+      data: [],
+      searchTerm: ""
     };
-  }
-  static propTypes = {
-    leads: PropTypes.array.isRequired,
-    getLeads: PropTypes.func.isRequired
-  };
-  componentDidMount() {
     this.props.getLeads();
   }
 
-  updateData(config) {
-    this.setState(config);
+  componentDidMount() {
+    const fkndata = this.props.getLeads();
+    console.log(fkndata);
+    this.setState({ data: this.props.leads });
   }
 
-  rerenderParentCallback() {
-    this.forceUpdate();
+  search(e) {
+    this.state.searchTerm = e.target.value;
+    let regexp = new RegExp(e.target.value, "i");
+    let matching = this.state.data.map(elem => {
+      elem.match = regexp.test(elem.name);
+      return elem;
+    });
+
+    this.setState({
+      data: matching
+    });
   }
 
   render() {
-    const leads = this.props.leads.map(lead => {
-      return (
-        <LeadItem
-          id={lead.id}
-          documentCode={lead.documentCode}
-          documentStageCode={lead.documentStageCode}
-          name={lead.name}
-          email={lead.email}
-          message={lead.message}
-          fileDocument={lead.fileDocument}
-          created_at={lead.created_at.slice(0, -17)}
-          update={this.updateData.bind(this)}
-        />
-      );
-    });
+    // const leads = this.props.leads.map(lead => {
+    //   return (
+    //     <LeadItem
+    //       key={lead.id}
+    //       id={lead.id}
+    //       documentCode={lead.documentCode}
+    //       documentStageCode={lead.documentStageCode}
+    //       name={lead.name}
+    //       email={lead.email}
+    //       message={lead.message}
+    //       fileDocument={lead.fileDocument}
+    //       created_at={lead.created_at.slice(0, -17)}
+    //       update={this.updateData.bind(this)}
+    //     />
+    //   );
+    // });
+    console.log(this.props.leads);
+    console.log(this.state);
     return (
       <Fragment>
         <h2>Мои записки</h2>
         <Searcher
-          leadsFromParent={this.props.leads}
-          rerenderParentCallback={this.rerenderParentCallback}
+          text={this.state.searchTerm}
+          search={this.search.bind(this)}
         />
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Тип документа</th>
-              <th>Этап</th>
-              <th>Предмет</th>
-              <th>Получатель</th>
-              <th>Источник</th>
-              <th>Файл</th>
-              <th>Дата</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>{leads}</tbody>
-        </table>
-        <Pagination
-          defaultCurrent={1}
-          total={50}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-          showSizeChanger
-          pageSizeOptions={["15", "30", "40", "50", "100"]}
-        />
+        <LeadList leads={this.props.leads} />
       </Fragment>
     );
   }
