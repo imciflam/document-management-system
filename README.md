@@ -1,5 +1,6 @@
 # document-management-system 
 
+```
 for local development:
 
 1. Install python3+pip3 if needed
@@ -20,4 +21,5 @@ for local development:
 
 6.2.2. npm run dev
 
-7. go to localhost:8000
+7. go to localhost:8000 
+```
