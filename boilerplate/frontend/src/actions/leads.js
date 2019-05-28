@@ -4,6 +4,8 @@ import { tokenConfig } from "./auth";
 
 import { GET_LEADS, DELETE_LEAD, ADD_LEAD } from "./types";
 
+
+//todo: check what's up with tokens
 // GET LEADS
 export const getLeads = () => (dispatch, getState) => {
   axios
