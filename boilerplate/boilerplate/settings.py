@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'frontend',
     'knox',
     'accounts',
-    'treaties',
-    'django_heroku'
+    'treaties'
 ]
 
 REST_FRAMEWORK = {
