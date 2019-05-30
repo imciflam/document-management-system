@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 var FileSaver = require("file-saver");
 
-export className TreatyChild extends Component {
+export class TreatyChild extends Component {
   onClick(j) {
     var blob = new Blob(["1"], {
       type: "text/plain;charset=utf-8"
@@ -10,7 +10,7 @@ export className TreatyChild extends Component {
     console.log(j);
     FileSaver.saveAs(blob, j);
   }
-  componentDidMount() { }
+  componentDidMount() {}
 
   render() {
     console.log(this.props.treatyFromParent);
@@ -18,8 +18,11 @@ export className TreatyChild extends Component {
       <div classNameName="card card-body mt-4 mb-4 mx-auto">
         <form>
           <div className="form-group row">
-            <label htmlFor="staticEmail" classNameName="col-sm-2 col-form-label">
-              Тип документа
+            <label
+              htmlFor="staticEmail"
+              classNameName="col-sm-2 col-form-label"
+            >
+              Тип дока
             </label>
             <div className="col-sm-10">
               <input
@@ -82,7 +85,9 @@ export className TreatyChild extends Component {
               />
             </div>
 
-            <label className="col-sm-2 col-form-label">Страна регистрации</label>
+            <label className="col-sm-2 col-form-label">
+              Страна регистрации
+            </label>
             <div className="col-sm-10">
               <input
                 type="text"
