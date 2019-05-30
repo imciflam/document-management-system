@@ -12,7 +12,7 @@ export class DisciplineChild extends Component {
             <div class="col-sm-10">
               <input
                 type="text"
-                readonly
+                readOnly
                 class="form-control-plaintext"
                 id="staticEmail"
                 value={this.props.dataFromParent.Performer}
@@ -27,7 +27,7 @@ export class DisciplineChild extends Component {
             <div class="col-sm-10">
               <input
                 type="text"
-                readonly
+                readOnly
                 class="form-control-plaintext"
                 id="staticEmail"
                 value={this.props.dataFromParent.NameTask}
@@ -42,7 +42,7 @@ export class DisciplineChild extends Component {
             <div class="col-sm-10">
               <input
                 type="text"
-                readonly
+                readOnly
                 class="form-control-plaintext"
                 id="staticEmail"
                 value={this.props.dataFromParent.Author}
@@ -57,7 +57,7 @@ export class DisciplineChild extends Component {
             <div class="col-sm-10">
               <input
                 type="text"
-                readonly
+                readOnly
                 class="form-control-plaintext"
                 id="staticEmail"
                 value={this.props.dataFromParent.DateOfSigning}
@@ -72,7 +72,7 @@ export class DisciplineChild extends Component {
             <div class="col-sm-10">
               <input
                 type="text"
-                readonly
+                readOnly
                 class="form-control-plaintext"
                 id="staticEmail"
                 value={this.props.dataFromParent.DataOfEnd}
@@ -87,7 +87,7 @@ export class DisciplineChild extends Component {
             <div class="col-sm-10">
               <input
                 type="text"
-                readonly
+                readOnly
                 class="form-control-plaintext"
                 id="staticEmail"
                 value={this.props.dataFromParent.Contorl}
@@ -102,7 +102,7 @@ export class DisciplineChild extends Component {
             <div class="col-sm-10">
               <input
                 type="text"
-                readonly
+                readOnly
                 class="form-control-plaintext"
                 id="staticEmail"
                 value={this.props.dataFromParent.Comments}
