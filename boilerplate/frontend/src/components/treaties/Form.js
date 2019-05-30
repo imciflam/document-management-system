@@ -122,7 +122,7 @@ export class FormForTreaties extends Component {
             <input
               type="text"
               readOnly
-              class="form-control-plaintext"
+              className="form-control-plaintext"
               id="staticEmail"
               value="договор"
               id="contractCode"
