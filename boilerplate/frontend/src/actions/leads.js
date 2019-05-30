@@ -24,7 +24,7 @@ export const deleteLead = id => (dispatch, getState) => {
   axios
     .delete(`/api/leads/${id}/`, tokenConfig(getState))
     .then(res => {
-      dispatch(createMessage({ deleteLead: "Успешно удалено" }));
+      dispatch(createMessage({ deleteLead: "Успешно перемещено" }));
       dispatch({
         type: DELETE_LEAD,
         payload: id

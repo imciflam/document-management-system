@@ -18,12 +18,7 @@ export class TreatyChild extends Component {
       <div classNameName="card card-body mt-4 mb-4 mx-auto">
         <form>
           <div className="form-group row">
-            <label
-              htmlFor="staticEmail"
-              classNameName="col-sm-2 col-form-label"
-            >
-              Тип дока
-            </label>
+            <label className="col-sm-2 col-form-label">Тип</label>
             <div className="col-sm-10">
               <input
                 type="text"
@@ -33,13 +28,13 @@ export class TreatyChild extends Component {
                 value={this.props.treatyFromParent.contractCode}
               />
             </div>
+
             <label className="col-sm-2 col-form-label">Этап</label>
-            <div classNameName="col-sm-10">
+            <div className="col-sm-10">
               <input
                 type="text"
                 readOnly
-                classNameName="form-control-plaintext"
-                id="staticEmail"
+                className="form-control-plaintext"
                 value={this.props.treatyFromParent.contractStageCode}
               />
             </div>
@@ -50,7 +45,6 @@ export class TreatyChild extends Component {
                 type="text"
                 readOnly
                 className="form-control-plaintext"
-                id="staticEmail"
                 value={this.props.treatyFromParent.contractType}
               />
             </div>

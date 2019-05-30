@@ -24,7 +24,7 @@ export const deleteTreaty = id => (dispatch, getState) => {
   axios
     .delete(`/api/treaties/${id}/`, tokenConfig(getState))
     .then(res => {
-      dispatch(createMessage({ deleteTreaty: "Успешно удалено" }));
+      dispatch(createMessage({ deleteTreaty: "Успешно перемещено" }));
       dispatch({
         type: DELETE_TREATY,
         payload: id
