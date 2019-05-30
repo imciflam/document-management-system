@@ -10,7 +10,7 @@ export class TreatyChild extends Component {
     console.log(j);
     FileSaver.saveAs(blob, j);
   }
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     console.log(this.props.treatyFromParent);
@@ -30,7 +30,7 @@ export class TreatyChild extends Component {
                 value={this.props.treatyFromParent.contractCode}
               />
             </div>
-            <label class="col-sm-2 col-form-label">Тип документа</label>
+            <label class="col-sm-2 col-form-label">Этап</label>
             <div class="col-sm-10">
               <input
                 type="text"
@@ -41,7 +41,7 @@ export class TreatyChild extends Component {
               />
             </div>
 
-            <label class="col-sm-2 col-form-label">Этап</label>
+            <label class="col-sm-2 col-form-label">Вид договора</label>
             <div class="col-sm-10">
               <input
                 type="text"

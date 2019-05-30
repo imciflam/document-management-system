@@ -29,6 +29,7 @@ export class FormForTreaties extends Component {
   state = {
     contractCode: "",
     contractStageCode: "",
+    contractType: "",
     counteragentCode: "",
     sumMoney: "",
     sumNDS: "",
@@ -43,14 +44,13 @@ export class FormForTreaties extends Component {
     super(props);
     this.state = {
       contractCode: "договор",
-      contractStageCode: "черновик"
+      contractStageCode: "черновик",
+      contractType: "основной",
     };
     this.fileInput = React.createRef();
   }
 
   onDatepickerChange(date, dateString) {
-    console.log(date);
-    console.log(dateString);
     this.setState({ dateOfSigning: dateString });
   }
 
@@ -121,7 +121,7 @@ export class FormForTreaties extends Component {
             <label htmlFor="contractCode">Тип документа</label>
             <input
               type="text"
-              readonly
+              readOnly
               class="form-control-plaintext"
               id="staticEmail"
               value="договор"

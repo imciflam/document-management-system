@@ -61,13 +61,9 @@ export class FormForDiscipline extends Component {
     } = this.state;
   };
   onDatepickerChangeS(date, dateString) {
-    console.log(date);
-    console.log(dateString);
     this.setState({ DateOfSigning: dateString });
   }
   onDatepickerChangeE(date, dateString) {
-    console.log(date);
-    console.log(dateString);
     this.setState({ DataOfEnd: dateString });
   }
   radioChange(e) {

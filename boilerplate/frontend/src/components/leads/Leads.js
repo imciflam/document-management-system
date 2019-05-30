@@ -51,10 +51,6 @@ export class Leads extends Component {
     //     />
     //   );
     // });
-    console.log("+");
-    console.log(this.props);
-    console.log(this.state);
-    console.log("+");
     return (
       <Fragment>
         <h2>Мои записки</h2>
