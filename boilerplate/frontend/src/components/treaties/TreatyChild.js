@@ -18,7 +18,7 @@ export className TreatyChild extends Component {
       <div classNameName="card card-body mt-4 mb-4 mx-auto">
         <form>
           <div className="form-group row">
-            <label for="staticEmail" classNameName="col-sm-2 col-form-label">
+            <label htmlFor="staticEmail" classNameName="col-sm-2 col-form-label">
               Тип документа
             </label>
             <div className="col-sm-10">
