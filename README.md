@@ -9,7 +9,7 @@ for local development:
 
 3. pipenv shell
 
-4. pipenv install django djangorestframework django-rest-knox
+4. pipenv install django djangorestframework django-rest-knox django-heroku (the last one is required in case of deploying using heroku, for postgres add-on) 
 
 5. npm i
 
