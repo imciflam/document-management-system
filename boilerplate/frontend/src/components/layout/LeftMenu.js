@@ -63,8 +63,8 @@ class LeftMenu extends React.Component {
 
   render() {
     return (
-      <Layout>
-        <Header className="header">
+      <Layout style={{ minHeight: '100vh' }} >
+        <Header className="header" trigger={null}>
           <div className="logo" />
           <Menu
             theme="dark"
@@ -93,12 +93,12 @@ class LeftMenu extends React.Component {
         </Header>
         <Content style={{ padding: "0 50px" }}>
           <Layout style={{ padding: "24px 0", background: "#fff" }}>
-            <Sider width={200} style={{ background: "#fff" }}>
+            <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} theme="light" width={300} >
               <Menu
                 mode="inline"
+                theme="light"
                 defaultSelectedKeys={[""]}
                 defaultOpenKeys={["sub1"]}
-                style={{ height: "100%" }}
               >
                 <SubMenu
                   key="sub1"
@@ -108,7 +108,7 @@ class LeftMenu extends React.Component {
                         style={{ verticalAlign: "0.125em" }}
                         type="folder"
                       />
-                      Общие папки
+                      <span>Общие папки</span>
                     </span>
                   }
                 >
@@ -194,12 +194,14 @@ class LeftMenu extends React.Component {
                     СЗ в ПрОФ
                   </Menu.Item>
                 </SubMenu>
+
+
                 <SubMenu
                   key="sub2"
                   title={
                     <span>
                       <Icon type="star" style={{ verticalAlign: "0.125em" }} />
-                      Избранное
+                      <span>Избранное</span>
                     </span>
                   }
                 />
@@ -208,22 +210,23 @@ class LeftMenu extends React.Component {
                   title={
                     <span>
                       <Icon type="user" style={{ verticalAlign: "0.125em" }} />
-                      Мои документы
+                      <span>Мои документы</span>
                     </span>
                   }
                 />
-                <SubMenu
-                  key="sub5"
-                  title={
-                    <span>
-                      <Icon
-                        type="laptop"
-                        style={{ verticalAlign: "0.125em" }}
-                      />
-                      Договоры
-                    </span>
-                  }
-                />
+
+                <Menu.Item
+                  onClick={() => {
+                    alert("в разработке");
+                  }}
+                >
+                  <Icon
+                    type="laptop"
+                    style={{ verticalAlign: "0.125em" }}
+                  />
+                  <span>Договоры</span>
+                </Menu.Item>
+
 
                 <Menu.Item
                   onClick={() => {
@@ -236,10 +239,12 @@ class LeftMenu extends React.Component {
                   />
                   <span>Результаты поиска</span>
                 </Menu.Item>
+
                 <Menu.Item>
                   <Icon type="delete" style={{ verticalAlign: "0.125em" }} />
                   <span>Архив</span>
                 </Menu.Item>
+
               </Menu>
             </Sider>
             <Content style={{ padding: "0 24px", minHeight: 280 }}>

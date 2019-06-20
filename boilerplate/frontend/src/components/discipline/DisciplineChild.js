@@ -7,7 +7,7 @@ export class DisciplineChild extends Component {
         <form>
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">
-              Испольнитель
+              Исполнитель
             </label>
             <div class="col-sm-10">
               <input
