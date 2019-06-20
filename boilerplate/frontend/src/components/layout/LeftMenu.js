@@ -64,7 +64,7 @@ class LeftMenu extends React.Component {
   render() {
     return (
       <Layout style={{ minHeight: '100vh' }} >
-        <Header className="header" trigger={null}>
+        <Header className="header">
           <div className="logo" />
           <Menu
             theme="dark"
