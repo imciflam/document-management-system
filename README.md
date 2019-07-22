@@ -20,9 +20,11 @@ npm i
 ```
 6. Run django server
 ```cd boilerplate
-python manage.py runserver```
+python manage.py runserver
+```
 
 7. Run frontend module bundler
 ```cd ./
-npm run dev```
+npm run dev
+```
 8. go to localhost:8000 
