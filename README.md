@@ -1,6 +1,6 @@
 # Document management system 
 
-###for dev purposes:
+### for dev purposes:
 1. Install python3+pip3 if needed
 2. Install pipenv environment
 ```
