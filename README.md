@@ -19,10 +19,10 @@ pipenv install django djangorestframework django-rest-knox django-heroku
 npm i
 ```
 6. Run django server
-```cd boilerplate```
-```python manage.py runserver```
+```cd boilerplate
+python manage.py runserver```
 
 7. Run frontend module bundler
-```cd ./```
-```npm run dev```
+```cd ./
+npm run dev```
 8. go to localhost:8000 
