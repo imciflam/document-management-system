@@ -10,7 +10,7 @@ pip install pipenv
 ```
 pipenv shell
 ```
-4. Install Python Packages (django-heroku is required in case of deploying using heroku for postgres add-on, skip if needed) 
+4. Install Python Packages (django-heroku is required in case of deploying to heroku using postgres add-on, skip if not needed) 
 ```
 pipenv install django djangorestframework django-rest-knox django-heroku
 ```
